@@ -16,6 +16,12 @@ class DynamicCodeMD5:
     FUNCTION = "generate"
     CATEGORY = "TT专用"
 
+    @classmethod
+    def IS_CHANGED(cls, dynamic_code):
+        now = datetime.now()
+        minute_bucket = (now.minute // 10) * 10
+        return f"{now.year:04d}{now.month:02d}{now.day:02d}{now.hour:02d}{minute_bucket:02d}_{dynamic_code}"
+
     def generate(self, dynamic_code):
         now = datetime.now()
         minute_bucket = (now.minute // 10) * 10
